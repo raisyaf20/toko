@@ -45,20 +45,20 @@ const authoption: NextAuthOptions = {
     async jwt({ token, account, profile, user }: any) {
       if (account?.provider === "credentials") {
         token.email = user.email;
-        token.name = user.fullname;
+        token.fullname = user.fullname;
         token.phone = user.phone;
         token.role = user.role;
       }
 
       if (account?.provider === "google") {
         const data = {
-          name: user.name,
+          fullname: user.fullname || user.name,
           email: user.email,
           type: "google",
         };
         await loginWithGoogle(data, (user: any) => {
           token.email = user.email;
-          token.fullname = user.name;
+          token.fullname = user.fullname;
           token.role = user.role;
         });
       }
@@ -69,8 +69,8 @@ const authoption: NextAuthOptions = {
       if ("email" in token) {
         session.user.email = token.email;
       }
-      if ("name" in token) {
-        session.user.name = token.name;
+      if ("fullname" in token) {
+        session.user.fullname = token.fullname;
       }
       if ("phone" in token) {
         session.user.phone = token.phone;

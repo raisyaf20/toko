@@ -9,6 +9,7 @@ const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
   const { data } = useSession();
+  const user: UserDataSession | null | undefined = data?.user;
 
   return (
     <>
@@ -21,7 +22,7 @@ export default function Home() {
       <main className={`${styles.main} ${inter.className}`}>
         <div className={styles.description}>
           <Navbar />
-          <p>Get started by {data?.user?.name}</p>
+          <p>Get started by {user?.fullname}</p>
           <div>
             <a
               href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
