@@ -67,3 +67,24 @@ export async function signIn(email: string) {
     return null;
   }
 }
+
+export async function loginWithGoogle(data: any, callback: Function) {
+  const q = query(
+    collection(firestore, "users"),
+    where("email", "==", data.email)
+  );
+  const snapshot = await getDocs(q);
+  const user = snapshot.docs.map((e) => ({
+    id: e.id,
+    ...e.data(),
+  }));
+
+  if (user.length > 0) {
+    callback(user[0]);
+  } else {
+    data.role = "member";
+    await addDoc(collection(firestore, "users"), data).then(() =>
+      callback(data)
+    );
+  }
+}

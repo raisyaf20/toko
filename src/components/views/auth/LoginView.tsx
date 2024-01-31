@@ -66,6 +66,14 @@ const LoginView = () => {
             <button type="submit" className={styles.register__form__button}>
               Register
             </button>
+            <hr />
+            <button
+              type="button"
+              onClick={() => signIn("google", { callbackUrl, redirect: false })}
+              className={styles.register__form__button}
+            >
+              Login With Google
+            </button>
           </form>
           <p className={styles.register__link}>
             Dont`t Have Account ? Sign Up{" "}
