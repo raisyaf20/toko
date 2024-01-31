@@ -1,3 +1,7 @@
+$slate-50: #f8fafc;
+$slate-700: #0f172a;
+$gray: #e5e7eb;
+
 .container {
   padding: 20px;
 }
@@ -38,11 +42,26 @@
       }
     }
     &__button {
-      background-color: #000;
-      color: #fff;
+      background-color: $gray;
+      color: $slate-700;
+      border: 2.6px solid $slate-700;
       width: 100%;
-      padding: 7px;
+      font-size: 16px;
+      cursor: pointer;
+      padding: 9px;
+      margin: 6px 0;
       border-radius: 6px;
+    }
+    &__buttonGoogle {
+      padding: 12px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 3px;
+      span {
+        color: black;
+        font-weight: 700;
+      }
     }
   }
   &__link {

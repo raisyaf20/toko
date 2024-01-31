@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/rules-of-hooks */
-import styles from "@/styles/auth/Register.module.scss";
+import styles from "@/styles/auth/Auth.module.scss";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { FormEvent, useState } from "react";
