@@ -1,4 +1,5 @@
 /* eslint-disable react-hooks/rules-of-hooks */
+import authServices from "@/services/auth";
 import styles from "@/styles/auth/Auth.module.scss";
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -19,22 +20,13 @@ const RegisterView = () => {
       phone: form.phone.value,
       password: form.password.value,
     };
-    const result = await fetch("/api/user/register", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.statusCode === 200) {
-          form.reset();
-          push("/auth/login");
-        } else {
-          setMessage(data.error.message);
-        }
-      });
+    const result = await authServices.registerAccount(data);
+    if (result.status === 200) {
+      form.reset();
+      push("/auth/login");
+    } else {
+      setMessage("Email is registered");
+    }
   };
 
   return (
