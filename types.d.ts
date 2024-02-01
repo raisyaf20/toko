@@ -4,6 +4,8 @@ type Users = {
   phono: int;
   password: string;
   role?: string;
+  created_at?: Date;
+  updated_at?: Date;
 };
 
 type UserDataSession = {
