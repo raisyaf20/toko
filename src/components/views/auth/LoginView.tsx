@@ -16,24 +16,23 @@ const LoginView = () => {
 
     const form = event.target as HTMLFormElement;
 
-    try {
-      const res: any = signIn("credentials", {
-        redirect: false,
-        email: form.email.value,
-        password: form.password.value,
-        callbackUrl,
+    signIn("credentials", {
+      redirect: false,
+      email: form.email.value,
+      password: form.password.value,
+      callbackUrl,
+    })
+      .then((res: any) => {
+        if (!res.error) {
+          form.reset();
+          push(callbackUrl);
+        } else {
+          setMessage("Email or Password Is Invalid");
+        }
+      })
+      .catch((err) => {
+        console.log(err);
       });
-
-      if (!res.error) {
-        form.reset();
-        push(callbackUrl);
-      } else {
-        setMessage("Email or Password Is Invalid");
-      }
-    } catch (error) {
-      setMessage("Email or Password Is Invalid");
-      console.log(error);
-    }
   };
 
   return (
