@@ -38,7 +38,7 @@ const LoginView = () => {
   return (
     <div className={styles.container}>
       <div className={styles.register}>
-        <h1 className={styles.register__title}>Login TokoAx Cuy</h1>
+        <h1 className={styles.register__title}>Login TokoAx</h1>
         <div className={styles.register__form}>
           {message && (
             <p className={styles.register__form__message}>{message}</p>
