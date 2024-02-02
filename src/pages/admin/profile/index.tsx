@@ -1,5 +1,11 @@
+import AdminLayouts from "@/components/layouts/AdminLayout";
+
 const AdminProfilePage = () => {
-  return <div>AdminProfilePage</div>;
+  return (
+    <AdminLayouts>
+      <div>AdminProfilePage</div>
+    </AdminLayouts>
+  );
 };
 
 export default AdminProfilePage;

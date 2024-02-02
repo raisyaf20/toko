@@ -1,0 +1,16 @@
+.layout {
+  display: flex;
+}
+
+.mainContent {
+  padding: 13.5px;
+  background-color: #e5e7eb;
+  width: 100%;
+}
+
+@media (max-width: 610px) {
+  .mainContent {
+    margin: 0 20px;
+    padding: 0;
+  }
+}
